@@ -1,6 +1,7 @@
 package com.dounets.controller;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,11 +27,12 @@ public class GreetingController {
 		String type = "png";
 		
 		String repesentationType= "dot";
+		Date dt = new Date();
 		
-		File out = new File("D:/Project/ML/Graphiviz/graphviz-java-api/tmp/out"+gv.getImageDpi()+"."+ type);   // Windows
+		File out = new File("D:/Project/ML/Graphiviz/rest-service-graphviz-api/tmp/out"+dt.getTime()+"."+ type);   // Windows
 		gv.writeGraphToFile( gv.getGraph(gv.getDotSource(), type, repesentationType), out );
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("tasks", gv.getGraph(gv.getDotSource(), type, repesentationType));
+		model.put("resultImage", gv.getGraph(gv.getDotSource(), type, repesentationType));
 		return model;
 	}
 }
